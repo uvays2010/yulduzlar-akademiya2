@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kabinet — Yulduzlar Akademiyasi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="nav"></header>
+  <main class="page">
+    
+<div class="wrap page-hero">
+  <div class="breadcrumbs"><a href="../index.html">Bosh sahifa</a> / Kabinet</div>
+  <h1>Sizning <span>observatoriyangiz</span></h1>
+  <p class="lead">Ism, XP, ochilgan darslar va test rekordlari shu brauzerda saqlanadi.</p>
+</div>
+<section><div class="wrap grid-2">
+  <div class="card">
+    <div class="field"><label>Ismingiz</label><input id="uname" placeholder="Masalan, Kamola" /></div>
+    <button class="btn btn-primary" id="save-name" type="button">Saqlash</button>
+    <p style="margin-top:16px">Jami XP: <b data-xp>0 XP</b></p>
+    <div class="xp-bar" style="margin-top:8px"><i id="xpfill"></i></div>
+    <p class="notice" style="margin-top:14px">100 XP = 1 daraja. Sertifikat uchun viktorinada 70%+ oling.</p>
+  </div>
+  <div class="card">
+    <h3>Yutuqlar</h3>
+    <div id="ach"></div>
+    <div style="margin-top:16px" class="actions">
+      <a class="btn btn-gold" href="sertifikat.html">Sertifikat</a>
+      <button class="btn btn-ghost" id="reset" type="button">Tozalash</button>
+    </div>
+  </div>
+</div>
+<div class="wrap" style="margin-top:18px"><div class="card"><h3>So‘nggi faoliyat</h3><div id="log"></div></div></div>
+</section>
+
+  </main>
+  <footer></footer>
+  <script src="../js/data.js"></script>
+  <script src="../js/prefs.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+const s = YA.load();
+document.getElementById("uname").value = s.name || "";
+document.getElementById("save-name").onclick = () => {
+  const name = document.getElementById("uname").value.trim();
+  YA.save({name});
+  YA.toast("Ism saqlandi");
+  const cur = YA.load();
+  if (window.YA_API && YA_API.ok) {
+    YA_API.send("/api/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, xp: cur.xp || 0 })
+    }).then(() => YA_API.send("/api/progress", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name,
+        xp: cur.xp || 0,
+        seen: cur.seen || [],
+        certs: cur.certs || [],
+        quizzes: cur.quizzes || {}
+      })
+    })).catch(() => {});
+  }
+};
+const xp = s.xp || 0;
+document.getElementById("xpfill").style.width = Math.min(100, (xp % 100)) + "%";
+const quizzes = s.quizzes || {};
+const certs = s.certs || [];
+const seen = s.seen || [];
+document.getElementById("ach").innerHTML = `
+  <p>Asosiy test rekordi: <b>${quizzes.asosiy ?? "—"}</b></p>
+  <p>Olimpiada rekordi: <b>${quizzes.olimpiada ?? "—"}</b></p>
+  <p>Sertifikatlar: <b>${certs.join(", ") || "hali yo‘q"}</b></p>
+  <p>Ochilgan darslar: <b>${seen.join(", ") || "hali yo‘q"}</b></p>`;
+document.getElementById("log").innerHTML = (s.log||[]).map(x=>`<p>+${x.n} XP · ${x.reason}</p>`).join("") || "<p>Hali yozuv yo‘q.</p>";
+document.getElementById("reset").onclick = () => { localStorage.removeItem("ya_academy_v2"); location.reload(); };
+</script>
+</body>
+</html>

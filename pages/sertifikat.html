@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sertifikat — Yulduzlar Akademiyasi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="nav"></header>
+  <main class="page">
+    
+<div class="wrap page-hero">
+  <div class="breadcrumbs"><a href="../index.html">Bosh sahifa</a> / Sertifikat</div>
+  <h1>Akademiya <span>guvohnomasi</span></h1>
+  <p class="lead">Ism kabinetdan olinadi. Rasmni saqlab, darsga olib kelishingiz mumkin.</p>
+  <div class="actions">
+    <button class="btn btn-primary" id="draw" type="button">Chizish</button>
+    <button class="btn btn-ghost" id="dl" type="button">Yuklab olish</button>
+  </div>
+</div>
+<section><div class="wrap"><canvas id="cert-canvas" width="900" height="560"></canvas>
+<p class="notice" style="margin-top:12px">Bu o‘quv yodgorligi, rasmiy diplom emas.</p></div></section>
+
+  </main>
+  <footer></footer>
+  <script src="../js/data.js"></script>
+  <script src="../js/prefs.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+function draw(){
+  const c=document.getElementById("cert-canvas"); const ctx=c.getContext("2d");
+  const s=YA.load(); const name=s.name||"Yulduz shogird";
+  const ok=(s.certs||[]).length? (s.certs.join(" + ")) : "portal ishtirokchisi";
+  ctx.fillStyle="#f7f1de"; ctx.fillRect(0,0,900,560);
+  ctx.strokeStyle="#1b2a4a"; ctx.lineWidth=8; ctx.strokeRect(24,24,852,512);
+  ctx.strokeStyle="#c9a227"; ctx.lineWidth=2; ctx.strokeRect(38,38,824,484);
+  ctx.fillStyle="#1b2a4a"; ctx.font="22px serif"; ctx.textAlign="center";
+  ctx.fillText("YULDUZLAR AKADEMIYASI",450,110);
+  ctx.font="16px serif"; ctx.fillStyle="#5a4a28";
+  ctx.fillText("O‘quv portali guvohnomasi",450,150);
+  ctx.font="40px serif"; ctx.fillStyle="#102038";
+  ctx.fillText(name,450,260);
+  ctx.font="18px serif"; ctx.fillStyle="#333";
+  ctx.fillText("Bo‘lim: "+ok,450,320);
+  ctx.fillText("Jami XP: "+(s.xp||0),450,360);
+  ctx.fillText(new Date().toLocaleDateString("uz-UZ"),450,430);
+  ctx.font="14px serif"; ctx.fillText("Maktab darsi uchun yodgorlik",450,480);
+}
+document.getElementById("draw").onclick=()=>{draw();YA.addXP(6,"Sertifikat");};
+document.getElementById("dl").onclick=()=>{
+  draw();
+  const a=document.createElement("a");
+  a.href=document.getElementById("cert-canvas").toDataURL("image/png");
+  a.download="sertifikat.png"; a.click();
+};
+draw();
+</script>
+</body>
+</html>

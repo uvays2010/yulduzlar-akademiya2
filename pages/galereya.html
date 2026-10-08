@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Galereya — Yulduzlar Akademiyasi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <div class="stars"></div>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="../index.html"><span class="logo-mark">✦</span> Yulduzlar Akademiyasi</a>
+      <nav class="nav-links" data-nav>
+        <a href="../index.html">Bosh sahifa</a>
+        <a href="sayyoralar.html">Sayyoralar</a>
+        <a href="quyosh-sistemasi.html">Quyosh sistemasi</a>
+        <a href="galereya.html">Galereya</a>
+        <a href="viktorina.html">Viktorina</a>
+        <a href="yangiliklar.html">Yangiliklar</a>
+        <a href="oyin.html">O‘yin</a>
+        <a class="nav-cta" href="aloqa.html">Qo‘shilish</a>
+      </nav>
+      <button class="burger" data-burger>☰</button>
+    </div>
+  </header>
+  <main class="page">
+    <div class="wrap page-hero">
+      <div class="breadcrumbs"><a href="../index.html">Bosh sahifa</a> / Galereya</div>
+      <h1>Kosmik <span>manzaralar</span></h1>
+      <p class="lead">Ochiq manbalardagi suratlar asosida tanlangan to‘plam. Har bir rasm ostida qisqa izoh bor.</p>
+    </div>
+    <section>
+      <div class="wrap grid-3" id="gallery"></div>
+    </section>
+  </main>
+  <footer><div class="wrap copy">© <span data-year></span> Yulduzlar Akademiyasi</div></footer>
+  <script src="../js/data.js"></script>
+  <script src="../js/prefs.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    const items = [
+      { t: "Yer orbitadan", d: "Moviy sayyoramizning nozik atmosferasi.", img: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=900&q=60" },
+      { t: "Samoviy yo‘l", d: "Yoz oqshomida qorong‘u osmonda ko‘rinadigan disk.", img: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=900&q=60" },
+      { t: "Tumanlik", d: "Yulduz tug‘iladigan gaz va chang o‘lkasi.", img: "https://images.unsplash.com/photo-1464802686167-b1e0c385ace3?auto=format&fit=crop&w=900&q=60" },
+      { t: "To‘lin oy", d: "Yerning doimiy yo‘ldoshi va suv oqimlarining hamkori.", img: "https://images.unsplash.com/photo-1522030299830-16b8d3d049fe?auto=format&fit=crop&w=900&q=60" },
+      { t: "Teleskop kechasi", d: "Kuzatuv — sabr va qiziqish mashqi.", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=60" },
+      { t: "Yulduz maydoni", d: "Har bir nuqta — uzoq o‘tmishdan kelgan yorug‘lik.", img: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=900&q=60" }
+    ];
+    document.getElementById("gallery").innerHTML = items.map(i => `
+      <article class="card">
+        <div class="media" style="background-image:url('${i.img}');height:200px"></div>
+        <h3>${i.t}</h3>
+        <p>${i.d}</p>
+      </article>`).join("");
+  </script>
+</body>
+</html>

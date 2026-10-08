@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sozlamalar — Yulduzlar Akademiyasi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .pref-box { max-width: 720px; margin: 0 auto; }
+    .pref-row {
+      display: grid; grid-template-columns: 140px 1fr; gap: 8px; align-items: center;
+      padding: 7px 0; border-bottom: 1px solid var(--line);
+    }
+    .pref-row b { font-size: .78rem; color: var(--muted); font-weight: 700; }
+    .pref-box .choice-row { padding: 0; gap: 5px; }
+    .pref-box .choice { padding: 4px 8px; font-size: .72rem; border-radius: 8px; }
+    .pref-box h2 { font-size: 1.15rem; margin-bottom: 8px; }
+    .pref-box .field { background: transparent; border: 0; padding: 0; margin: 0; }
+    .pref-box input { padding: 6px 8px; font-size: .85rem; border: 1px solid var(--line); border-radius: 8px; background: #0b1228; color: #fff; }
+    .pref-head { display:flex; justify-content:space-between; gap:10px; align-items:end; margin-bottom:12px; }
+    .pref-head p { color: var(--muted); font-size: .86rem; margin: 0; }
+  </style>
+</head>
+<body>
+  <header class="nav"></header>
+  <main class="page">
+    <div class="wrap page-hero" style="padding-bottom:0">
+      <div class="breadcrumbs"><a href="../index.html">Bosh sahifa</a> / Sozlamalar</div>
+    </div>
+    <section style="padding-top:12px">
+      <div class="wrap pref-box">
+        <div class="card">
+          <div class="pref-head">
+            <div>
+              <h2>Sozlamalar</h2>
+              <p>Salom, <b data-nick>o‘quvchi</b>. O‘zgarish darhol saqlanadi.</p>
+            </div>
+            <div class="actions">
+              <button class="btn btn-ghost" id="reset" type="button">Qayta</button>
+              <button class="btn btn-primary" id="save" type="button">Saqlash</button>
+            </div>
+          </div>
+          <div id="pref-form"></div>
+          <p id="srv" style="margin-top:10px;color:var(--muted);font-size:.8rem">—</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer></footer>
+  <script src="../js/data.js"></script>
+  <script src="../js/prefs.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    const FIELDS = [
+      ["nickname","Taxallus","text"],
+      ["font","Shrift",[["90","Kichik"],["100","Oddiy"],["115","Katta"]]],
+      ["accent","Rang",[["cyan","Cyan"],["gold","Oltin"],["violet","Binafsha"],["green","Yashil"]]],
+      ["theme","Mavzu",[["dark","Dark"],["deeper","Qora"],["aurora","Aurora"]]],
+      ["motion","Animatsiya",[["on","On"],["off","Off"]]],
+      ["stars","Yulduz fon",[["on","On"],["off","Off"]]],
+      ["meteors","Meteor",[["on","On"],["off","Off"]]],
+      ["cursorTrail","Kursor",[["on","On"],["off","Off"]]],
+      ["showXP","XP",[["on","On"],["off","Off"]]],
+      ["compact","Ixcham",[["off","Yo‘q"],["on","Ha"]]],
+      ["contrast","Kontrast",[["off","Yo‘q"],["on","Ha"]]],
+      ["bigButtons","Katta tugma",[["off","Yo‘q"],["on","Ha"]]],
+      ["stickyNav","Yopishqoq",[["on","On"],["off","Off"]]],
+      ["width","Kenglik",[["980","Tor"],["1240","Oddiy"],["1440","Keng"]]]
+    ];
+    const box = document.getElementById("pref-form");
+    const prefs = YA_PREFS.load();
+    box.innerHTML = FIELDS.map(function(f){
+      if (f[2]==="text") {
+        return '<div class="pref-row"><b>'+f[1]+'</b><input id="'+f[0]+'" value="'+(prefs[f[0]]||"")+'" /></div>';
+      }
+      return '<div class="pref-row"><b>'+f[1]+'</b><div><input type="hidden" id="'+f[0]+'" value="'+(prefs[f[0]]||f[2][0][0])+'" /><div class="choice-row" data-for="'+f[0]+'">' +
+        f[2].map(function(o){ return '<button type="button" class="choice'+(prefs[f[0]]===o[0]?" on":"")+'" data-val="'+o[0]+'">'+o[1]+'</button>'; }).join("") +
+        '</div></div></div>';
+    }).join("");
+    function collect(){
+      const o={};
+      FIELDS.forEach(function(f){ const el=document.getElementById(f[0]); if(el) o[f[0]]=el.value; });
+      return o;
+    }
+    box.addEventListener("click", function(e){
+      const btn=e.target.closest(".choice"); if(!btn) return;
+      const row=btn.parentElement;
+      row.querySelectorAll(".choice").forEach(function(b){ b.classList.remove("on"); });
+      btn.classList.add("on");
+      document.getElementById(row.getAttribute("data-for")).value = btn.getAttribute("data-val");
+      YA_PREFS.set(collect());
+    });
+    const nick=document.getElementById("nickname");
+    if(nick) nick.addEventListener("input", function(){ YA_PREFS.set(collect()); });
+    document.getElementById("save").onclick=function(){ YA_PREFS.set(collect()); YA.toast("Saqlandi"); };
+    document.getElementById("reset").onclick=function(){ YA_PREFS.reset(); location.reload(); };
+    setTimeout(function(){
+      if(!window.YA_API || !YA_API.ok){ document.getElementById("srv").textContent="Shaxsiy sozlama brauzerda saqlanadi."; return; }
+      document.getElementById("srv").textContent="Server ham ulangan.";
+    },400);
+  </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sayt xaritasi — Yulduzlar Akademiyasi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <div class="stars"></div>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="../index.html"><span class="logo-mark">✦</span> Yulduzlar Akademiyasi</a>
+      <nav class="nav-links" data-nav>
+        <a href="../index.html">Bosh sahifa</a>
+        <a href="sayyoralar.html">Sayyoralar</a>
+        <a class="nav-cta" href="aloqa.html">Qo‘shilish</a>
+      </nav>
+      <button class="burger" data-burger>☰</button>
+    </div>
+  </header>
+  
+  <main class="page">
+    <div class="wrap page-hero">
+      <h1>Barcha <span>sahifalar</span></h1>
+      <p class="lead">30+ sahifalik portal xaritasi. Qidiruv: Ctrl+K.</p>
+    </div>
+    <section>
+      <div class="wrap grid-3" id="map"></div>
+    </section>
+  </main>
+
+  <footer><div class="wrap copy">© <span data-year></span> Yulduzlar Akademiyasi</div></footer>
+  <script src="../js/data.js"></script>
+  <script src="../js/prefs.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/main.js"></script>
+<script>
+const groups = {
+  "Asosiy": ["portal","loyiha","profil","meny","xabar","savol","odam"],
+  "O‘quv": ["atlas","tizim","tarix","kurs","so‘z","fakt","parvoz","kashshof"],
+  "Laboratoriya": ["simulyator","vosita","test","o‘yin","kalkulyator","o‘lchov","oy","diplom"],
+  "Osmon va jurnal": ["osmon","media","jurnal","taqvim","teleskop","qizil","yog‘in","boshqa yulduz"]
+};
+const box=document.getElementById("map");
+if(box){
+  const used=new Set();
+  const cards = Object.entries(groups).map(([g,tags])=>{
+    const items = YA_DATA.pages.filter(p=>tags.includes(p[2]));
+    items.forEach(p=>used.add(p[1]));
+    return `<div class="card"><h3>${g}</h3>` + items.map(p=>{
+      const href = p[1].startsWith("pages/") ? p[1].slice(6) : "../"+p[1];
+      return `<a href="${href}" style="display:block;margin:6px 0">${p[0]}</a>`;
+    }).join("") + "</div>";
+  });
+  const rest = YA_DATA.pages.filter(p=>!used.has(p[1]));
+  if (rest.length) {
+    cards.push(`<div class="card"><h3>Qo‘shimcha</h3>` + rest.map(p=>{
+      const href = p[1].startsWith("pages/") ? p[1].slice(6) : "../"+p[1];
+      return `<a href="${href}" style="display:block;margin:6px 0">${p[0]}</a>`;
+    }).join("") + "</div>");
+  }
+  box.innerHTML = cards.join("");
+}
+</script>
+</body>
+</html>

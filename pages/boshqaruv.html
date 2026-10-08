@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Boshqaruv — Yulduzlar Akademiyasi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="nav"></header>
+  <main class="page">
+    <div class="wrap page-hero">
+      <div class="breadcrumbs"><a href="../index.html">Bosh sahifa</a> / Boshqaruv</div>
+      <h1>Server <span>paneli</span></h1>
+      <p class="lead">Backend statistikasi: xabarlar, ballar, klub, tashriflar.</p>
+      <p data-api-state>Backend tekshirilmoqda…</p>
+      <p><a class="btn btn-primary" href="/panel">To‘liq backend panel</a></p>
+    </div>
+    <section>
+      <div class="wrap stats" id="st"></div>
+      <div class="wrap grid-2" style="margin-top:18px">
+        <div class="card" id="visits"></div>
+        <div class="card" id="msgs"></div>
+      </div>
+    </section>
+  </main>
+  <footer></footer>
+  <script src="../js/data.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/prefs.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    setTimeout(function(){
+      if(!YA_API.ok){
+        document.getElementById("st").innerHTML = "<div class='stat'><b>—</b><span>server o‘chiq</span></div>";
+        return;
+      }
+      Promise.all([
+        YA_API.send("/api/stats"),
+        YA_API.send("/api/visits"),
+        YA_API.send("/api/contact")
+      ]).then(([st, vis, msg])=>{
+        document.getElementById("st").innerHTML = [
+          ["Xabar", st.messages],
+          ["Ball", st.scores],
+          ["O‘quvchi", st.users],
+          ["Savol", st.questions],
+          ["Klub", st.club],
+          ["Tashrif", st.visits]
+        ].map(([k,v])=>"<div class='stat'><b>"+v+"</b><span>"+k+"</span></div>").join("");
+        document.getElementById("visits").innerHTML = "<h3>Ko‘p ochilgan sahifalar</h3>" +
+          (vis.top||[]).map(x=>"<p>"+x.page+" — "+x.n+"</p>").join("") || "<p>Hali yo‘q</p>";
+        document.getElementById("msgs").innerHTML = "<h3>So‘nggi xabarlar</h3>" +
+          (msg.items||[]).slice(0,6).map(x=>"<p><b>"+x.name+"</b>: "+x.msg+"</p>").join("") || "<p>Hali yo‘q</p>";
+      });
+    }, 450);
+  </script>
+</body>
+</html>

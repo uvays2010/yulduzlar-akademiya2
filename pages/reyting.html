@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reyting — Yulduzlar Akademiyasi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="nav"></header>
+  <main class="page">
+    <div class="wrap page-hero">
+      <div class="breadcrumbs"><a href="../index.html">Bosh sahifa</a> / Reyting</div>
+      <h1>Viktorina <span>jadvali</span></h1>
+      <p class="lead">Backend yoqilgan bo‘lsa, ballar shu yerda ko‘rinadi. Aks holda kabinetdagi mahalliy rekord ishlayveradi.</p>
+      <p data-api-state>Backend tekshirilmoqda…</p>
+    </div>
+    <section>
+      <div class="wrap">
+        <div class="chip-row">
+          <button class="chip active" type="button" data-set="">Hammasi</button>
+          <button class="chip" type="button" data-set="asosiy">Asosiy</button>
+          <button class="chip" type="button" data-set="olimpiada">Olimpiada</button>
+        </div>
+        <div class="card" id="board">Yuklanmoqda…</div>
+      </div>
+    </section>
+  </main>
+  <footer></footer>
+  <script src="../js/data.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/prefs.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    function load(set){
+      const box = document.getElementById("board");
+      if (!YA_API.ok) {
+        const s = YA.load();
+        const q = s.quizzes || {};
+        box.innerHTML = "<p>Server o‘chiq. Mahalliy rekord: asosiy " + (q.asosiy ?? "—") + ", olimpiada " + (q.olimpiada ?? "—") + "</p>";
+        return;
+      }
+      YA_API.send("/api/leaderboard" + (set ? ("?set=" + encodeURIComponent(set)) : "")).then(d => {
+        if (!d.items.length) { box.innerHTML = "<p>Hali ball yo‘q.</p>"; return; }
+        box.innerHTML = "<table><tr><th>#</th><th>Ism</th><th>Test</th><th>Ball</th><th>%</th></tr>" +
+          d.items.map((x,i)=>`<tr><td>${i+1}</td><td>${x.name}</td><td>${x.set}</td><td>${x.score}/${x.total}</td><td>${x.percent}%</td></tr>`).join("") +
+          "</table>";
+      }).catch(() => { box.innerHTML = "<p>Reyting olinmadi.</p>"; });
+    }
+    setTimeout(() => load(""), 400);
+    document.querySelectorAll("[data-set]").forEach(btn => {
+      btn.onclick = () => {
+        document.querySelectorAll("[data-set]").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        load(btn.dataset.set);
+      };
+    });
+  </script>
+</body>
+</html>

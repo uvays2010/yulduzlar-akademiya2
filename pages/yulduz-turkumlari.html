@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yulduz turkumlari — Yulduzlar Akademiyasi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="nav"></header>
+  <main class="page">
+    
+<div class="wrap page-hero">
+  <div class="breadcrumbs"><a href="../index.html">Bosh sahifa</a> / Turkumlar</div>
+  <h1>Osmondagi <span>naqshlar</span></h1>
+  <p class="lead">Avval faslni tanlang, keyin yorqin yulduzlarni qidiring.</p>
+  <div class="chip-row">
+    <button class="chip active" data-filter="all" type="button">Hammasi</button>
+    <button class="chip" data-filter="Qish" type="button">Qish</button>
+    <button class="chip" data-filter="Bahor" type="button">Bahor</button>
+    <button class="chip" data-filter="Yoz" type="button">Yoz</button>
+    <button class="chip" data-filter="Yil bo‘yi" type="button">Yil bo‘yi</button>
+  </div>
+</div>
+<section><div class="wrap grid-3" id="c"></div></section>
+
+  </main>
+  <footer></footer>
+  <script src="../js/data.js"></script>
+  <script src="../js/prefs.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+const box = document.getElementById("c");
+function draw(f){
+  box.innerHTML = YA_DATA.constellations.filter(x=>f==="all"||x.season===f||x.season.indexOf(f)>-1).map(x=>`
+    <article class="card" data-type="${x.season}"><span class="tag violet">${x.season}</span>
+    <h3>${x.name}</h3><p><b>${x.stars}</b></p><p>${x.about}</p></article>`).join("");
+}
+draw("all");
+document.querySelectorAll("[data-filter]").forEach(ch=>{
+  ch.addEventListener("click",()=>{
+    document.querySelectorAll("[data-filter]").forEach(c=>c.classList.remove("active"));
+    ch.classList.add("active"); draw(ch.dataset.filter);
+  });
+});
+</script>
+</body>
+</html>

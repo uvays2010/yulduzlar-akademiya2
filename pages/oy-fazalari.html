@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Oy fazalari — Yulduzlar Akademiyasi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="nav"></header>
+  <main class="page">
+    <div class="wrap page-hero">
+      <div class="breadcrumbs"><a href="../index.html">Bosh sahifa</a> / Oy fazasi</div>
+      <h1>Oy bugun <span>qanday?</span></h1>
+      <p class="lead">Soddalashtirilgan 29.53 kunlik sikl. Aniq observatoriya hisobi emas — o‘quv modeli.</p>
+    </div>
+    <section>
+      <div class="wrap grid-2">
+        <div class="card">
+          <div class="field"><label>Sana</label><input id="d" type="date" /></div>
+          <button class="btn btn-primary" id="go" type="button">Hisoblash</button>
+          <div class="moon-stage" id="stage">
+            <div class="moon-wrap">
+              <div class="moon-ring"></div>
+              <div class="moon-ball">
+                <div class="moon-shade" id="shade"></div>
+              </div>
+            </div>
+            <div class="moon-label" id="moon-label">—</div>
+          </div>
+        </div>
+        <div class="card">
+          <h3 id="phase-name">—</h3>
+          <p id="phase-text"></p>
+          <div class="progress" style="margin-top:16px"><i id="illum-bar"></i></div>
+          <p class="notice">Yangi oy, birinchi chorak, to‘lin oy, oxirgi chorak ketma-ket almashadi.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer></footer>
+  <script src="../js/data.js"></script>
+  <script src="../js/prefs.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    const stage = document.getElementById("stage");
+    for (let i = 0; i < 18; i++) {
+      const s = document.createElement("i");
+      s.style.left = Math.random() * 94 + "%";
+      s.style.top = Math.random() * 90 + "%";
+      s.style.animationDelay = (Math.random() * 2) + "s";
+      stage.appendChild(s);
+    }
+    function phase(date){
+      const syn = 29.530588;
+      const known = Date.UTC(2000,0,6,18,14,0);
+      const age = ((date.getTime() - known)/86400000) % syn;
+      const a = age < 0 ? age + syn : age;
+      const names = [
+        [1.8,"Yangi oy","Osmon qorong‘u — yulduzlar yaxshi ko‘rinadi."],
+        [6.5,"O‘suvchi hilol","Ingichka yorug‘lik. Krater soyalarini qidiring."],
+        [9.5,"Birinchi chorak","Yarmi yorug‘. Kechqurun osmonda."],
+        [13.5,"O‘suvchi dumaloq","To‘lin oyga yaqin."],
+        [16.5,"To‘lin oy","Eng yorqin. Suv oqimlari kuchliroq bo‘ladi."],
+        [20.5,"Kamayuvchi dumaloq","Yorug‘lik pasayadi."],
+        [23.8,"Oxirgi chorak","Yarmi. Tongga yaqin ko‘rinadi."],
+        [27.5,"Kamayuvchi hilol","Sikl yakunlanmoqda."],
+        [29.6,"Yangi oy","Yana qorong‘u osmon."]
+      ];
+      const n = names.find(x=>a<=x[0]);
+      const illum = 0.5 - 0.5*Math.cos(2*Math.PI*a/syn);
+      return {age:a, name:n[1], text:n[2], illum, waxing: a < syn/2};
+    }
+    function paint(dt, xp){
+      const p = phase(dt);
+      document.getElementById("phase-name").textContent = p.name;
+      document.getElementById("moon-label").textContent = p.name;
+      document.getElementById("phase-text").textContent = "Yosh: " + p.age.toFixed(1) + " kun. Yorug‘ qism taxminan " + Math.round(p.illum*100) + "%. " + p.text;
+      document.getElementById("illum-bar").style.width = Math.round(p.illum*100) + "%";
+      const shade = document.getElementById("shade");
+      const shift = (0.5 - p.illum) * 180 * (p.waxing ? 1 : -1);
+      shade.style.transform = "translateX(" + shift + "px)";
+      shade.style.opacity = p.illum < 0.04 ? "0.92" : "0.78";
+      if (xp && window.YA) YA.addXP(3, "Oy fazasi");
+    }
+    const inp = document.getElementById("d");
+    const today = new Date();
+    inp.value = today.toISOString().slice(0,10);
+    document.getElementById("go").onclick = () => paint(new Date(inp.value + "T12:00:00"), true);
+    paint(today, false);
+  </script>
+</body>
+</html>

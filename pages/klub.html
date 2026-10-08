@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Klub ro‘yxati — Yulduzlar Akademiyasi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="nav"></header>
+  <main class="page">
+    <div class="wrap page-hero">
+      <div class="breadcrumbs"><a href="../index.html">Bosh sahifa</a> / Klub</div>
+      <h1>Maktab <span>klubi</span></h1>
+      <p class="lead">Ismni yozing — ro‘yxat backendda saqlanadi.</p>
+      <p data-api-state>Backend tekshirilmoqda…</p>
+    </div>
+    <section>
+      <div class="wrap grid-2">
+        <form class="card" id="cform">
+          <div class="field"><label>Ism</label><input id="cn" required /></div>
+          <div class="field"><label>Maktab</label><input id="cs" placeholder="Maktab nomi" /></div>
+          <div class="field"><label>Sinf</label><input id="cg" placeholder="8-sinf" /></div>
+          <div class="field"><label>Qiziqish</label>
+            <select id="ci">
+              <option>kuzatuv</option>
+              <option>viktorina</option>
+              <option>raketa modellari</option>
+              <option>umumiy</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" type="submit">Ro‘yxatga yozilish</button>
+        </form>
+        <div class="card" id="clist">Ro‘yxat yuklanmoqda…</div>
+      </div>
+    </section>
+  </main>
+  <footer></footer>
+  <script src="../js/data.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/prefs.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    function load(){
+      const box=document.getElementById("clist");
+      if(!YA_API.ok){ box.innerHTML="<p>Server o‘chiq. Avval backendni yoqing.</p>"; return; }
+      YA_API.send("/api/club").then(d=>{
+        box.innerHTML = "<h3>A’zolar: "+d.items.length+"</h3>" + d.items.map(x=>
+          "<p><b>"+x.name+"</b> · "+(x.school||"—")+" · "+(x.grade||"")+" · "+x.interest+"</p>"
+        ).join("") || "<p>Hali a’zo yo‘q.</p>";
+      }).catch(()=>box.innerHTML="<p>Ro‘yxat olinmadi.</p>");
+    }
+    document.getElementById("cform").onsubmit=function(e){
+      e.preventDefault();
+      if(!YA_API.ok){ YA.toast("Backend o‘chiq"); return; }
+      YA_API.send("/api/club",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:cn.value,school:cs.value,grade:cg.value,interest:ci.value})})
+        .then(()=>{ cform.reset(); YA.addXP(8,"Klub"); load(); })
+        .catch(err=>YA.toast(err.message||"Xato"));
+    };
+    setTimeout(load,400);
+  </script>
+</body>
+</html>

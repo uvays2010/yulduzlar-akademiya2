@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sayyoralar atlasi — Yulduzlar Akademiyasi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <div class="stars"></div>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="../index.html"><span class="logo-mark">✦</span> Yulduzlar Akademiyasi</a>
+      <nav class="nav-links" data-nav>
+        <a href="../index.html">Bosh sahifa</a>
+        <a href="sayyoralar.html">Sayyoralar</a>
+        <a href="quyosh-sistemasi.html">Quyosh sistemasi</a>
+        <a href="galereya.html">Galereya</a>
+        <a href="viktorina.html">Viktorina</a>
+        <a href="yangiliklar.html">Yangiliklar</a>
+        <a href="oyin.html">O‘yin</a>
+        <a class="nav-cta" href="aloqa.html">Qo‘shilish</a>
+      </nav>
+      <button class="burger" data-burger>☰</button>
+    </div>
+  </header>
+  <main class="page">
+    <div class="wrap page-hero">
+      <div class="breadcrumbs"><a href="../index.html">Bosh sahifa</a> / Sayyoralar</div>
+      <h1>Sayyoralar <span>atlasi</span></h1>
+      <p class="lead">Qidiruv va filtr bilan 8 ta sayyorani oching. Har bir kartada asosiy raqamlar va qisqa izoh bor.</p>
+      <div class="searchbar">
+        <input data-planet-search type="search" placeholder="Sayyora nomini yozing…" />
+      </div>
+      <div class="chip-row">
+        <button class="chip active" data-filter="all" type="button">Hammasi</button>
+        <button class="chip" data-filter="ichki" type="button">Ichki</button>
+        <button class="chip" data-filter="tashqi" type="button">Tashqi</button>
+      </div>
+    </div>
+    <section>
+      <div class="wrap grid-4" id="planet-grid"></div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap copy">© <span data-year></span> Yulduzlar Akademiyasi</div>
+  </footer>
+  <script src="../js/data.js"></script>
+  <script src="../js/prefs.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    const inner = new Set(["merkuriy","venera","yer","mars"]);
+    const grid = document.getElementById("planet-grid");
+    grid.innerHTML = YA_DATA.planets.map(p => `
+      <a class="card planet-card" data-planet-card data-name="${p.name}" data-type="${p.type || (inner.has(p.id) ? "ichki" : "tashqi")}" href="sayyora.html?id=${p.id}">
+        <div class="orb" style="background:${p.color};color:${p.color}"></div>
+        <span class="tag">${p.tag}</span>
+        <h3>${p.name}</h3>
+        <p>${p.distance} · ${p.moons} yo‘ldosh</p>
+      </a>`).join("");
+  </script>
+</body>
+</html>

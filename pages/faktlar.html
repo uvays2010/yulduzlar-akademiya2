@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Faktlar — Yulduzlar Akademiyasi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <div class="stars"></div>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="../index.html"><span class="logo-mark">✦</span> Yulduzlar Akademiyasi</a>
+      <nav class="nav-links" data-nav>
+        <a href="../index.html">Bosh sahifa</a>
+        <a href="sayyoralar.html">Sayyoralar</a>
+        <a href="quyosh-sistemasi.html">Quyosh sistemasi</a>
+        <a href="galereya.html">Galereya</a>
+        <a href="viktorina.html">Viktorina</a>
+        <a href="yangiliklar.html">Yangiliklar</a>
+        <a href="oyin.html">O‘yin</a>
+        <a class="nav-cta" href="aloqa.html">Qo‘shilish</a>
+      </nav>
+      <button class="burger" data-burger>☰</button>
+    </div>
+  </header>
+  <main class="page">
+    <div class="wrap page-hero">
+      <div class="breadcrumbs"><a href="../index.html">Bosh sahifa</a> / Faktlar</div>
+      <h1>Aqlni <span>hayratga soladigan</span> faktlar</h1>
+      <p class="lead">Har bir fakt keyingi darsga eshik ochadi. Tasodifiy tugma bilan yangisini oling.</p>
+      <button class="btn btn-primary" data-new-fact type="button">Tasodifiy fakt</button>
+    </div>
+    <section>
+      <div class="wrap">
+        <div class="card"><p data-random-fact style="font-size:1.35rem;color:#fff"></p></div>
+        <div class="grid-2" style="margin-top:18px" id="all-facts"></div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap copy">© <span data-year></span> Yulduzlar Akademiyasi</div></footer>
+  <script src="../js/data.js"></script>
+  <script src="../js/prefs.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    document.getElementById("all-facts").innerHTML = YA_DATA.facts.map((f,i)=>`
+      <article class="card"><span class="tag">${i+1}</span><p>${f}</p></article>`).join("");
+  </script>
+</body>
+</html>

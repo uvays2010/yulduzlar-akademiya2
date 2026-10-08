@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yangiliklar — Yulduzlar Akademiyasi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <div class="stars"></div>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="../index.html"><span class="logo-mark">✦</span> Yulduzlar Akademiyasi</a>
+      <nav class="nav-links" data-nav>
+        <a href="../index.html">Bosh sahifa</a>
+        <a href="sayyoralar.html">Sayyoralar</a>
+        <a href="quyosh-sistemasi.html">Quyosh sistemasi</a>
+        <a href="galereya.html">Galereya</a>
+        <a href="viktorina.html">Viktorina</a>
+        <a href="yangiliklar.html">Yangiliklar</a>
+        <a href="oyin.html">O‘yin</a>
+        <a class="nav-cta" href="aloqa.html">Qo‘shilish</a>
+      </nav>
+      <button class="burger" data-burger>☰</button>
+    </div>
+  </header>
+  <main class="page">
+    <div class="wrap page-hero">
+      <div class="breadcrumbs"><a href="../index.html">Bosh sahifa</a> / Yangiliklar</div>
+      <h1>Kosmos <span>jurnali</span></h1>
+      <p class="lead">Qisqa xabarlar va chuqurroq maqolalar. Bu o‘quv loyihasi — sanalar namuna sifatida berilgan.</p>
+      <div class="chip-row" id="news-chips"></div>
+    </div>
+    <section>
+      <div class="wrap grid-2" id="news"></div>
+      <div class="wrap grid-2" style="margin-top:18px">
+        <a class="card" href="maqola-webb.html"><span class="tag">Maqola</span><h3>James Webb nima uchun muhim?</h3><p>Infraqizil ko‘z, uzoq galaktikalar va muzli okeanlar izi.</p></a>
+        <a class="card" href="maqola-mars.html"><span class="tag gold">Maqola</span><h3>Marsga sayohat: orzu va reja</h3><p>Masofa, nurlanish, yoqilg‘i va inson omili haqida sodda tushuntirish.</p></a>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap copy">© <span data-year></span> Yulduzlar Akademiyasi</div></footer>
+  <script src="../js/data.js"></script>
+  <script src="../js/prefs.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    const cats = ["Hammasi"].concat(Array.from(new Set(YA_DATA.news.map(n=>n.cat))));
+    const chips = document.getElementById("news-chips");
+    chips.innerHTML = cats.map((c,i)=>`<button class="chip${i===0?" active":""}" data-news-filter="${c}" type="button">${c}</button>`).join("");
+    function drawNews(cat){
+      const list = cat==="Hammasi" ? YA_DATA.news : YA_DATA.news.filter(n=>n.cat===cat);
+      document.getElementById("news").innerHTML = list.map(n => `
+      <article class="card">
+        <span class="tag">${n.cat}</span>
+        <h3>${n.title}</h3>
+        <p>${n.excerpt}</p>
+        <small style="color:#9aa8c7">${n.date}</small>
+      </article>`).join("");
+    }
+    drawNews("Hammasi");
+    chips.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-news-filter]");
+      if (!btn) return;
+      chips.querySelectorAll(".chip").forEach(c=>c.classList.remove("active"));
+      btn.classList.add("active");
+      drawNews(btn.dataset.newsFilter);
+    });
+  </script>
+</body>
+</html>

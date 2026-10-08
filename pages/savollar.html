@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Savollar doskasi — Yulduzlar Akademiyasi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="nav"></header>
+  <main class="page">
+    <div class="wrap page-hero">
+      <div class="breadcrumbs"><a href="../index.html">Bosh sahifa</a> / Savollar</div>
+      <h1>O‘quvchi <span>savollari</span></h1>
+      <p class="lead">Savol serverga yoziladi. Backend o‘chiq bo‘lsa, doskada ko‘rinadi.</p>
+      <p data-api-state>Backend tekshirilmoqda…</p>
+    </div>
+    <section>
+      <div class="wrap grid-2">
+        <form class="card" id="qform">
+          <div class="field"><label>Ism</label><input id="qn" required placeholder="Ismingiz" /></div>
+          <div class="field"><label>Mavzu</label>
+            <select id="qt">
+              <option>sayyoralar</option>
+              <option>teleskop</option>
+              <option>test</option>
+              <option>umumiy</option>
+            </select>
+          </div>
+          <div class="field"><label>Savol</label><textarea id="qx" rows="4" required placeholder="Nimani bilmoqchisiz?"></textarea></div>
+          <button class="btn btn-primary" type="submit">Yuborish</button>
+        </form>
+        <div id="qlist"></div>
+      </div>
+    </section>
+  </main>
+  <footer></footer>
+  <script src="../js/data.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/prefs.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    function draw(items){
+      document.getElementById("qlist").innerHTML = (items||[]).map(x=>`
+        <article class="card" style="margin-bottom:12px">
+          <span class="tag">${x.topic||"umumiy"}</span>
+          <h3>${x.name}</h3>
+          <p>${x.text}</p>
+          ${x.answer ? "<p><b>Javob:</b> "+x.answer+"</p>" : "<p style=color:#9aa8c7>Hali javob yo‘q</p>"}
+        </article>`).join("") || "<div class='card'><p>Hali savol yo‘q.</p></div>";
+    }
+    function load(){
+      if(!YA_API.ok){ draw([]); return; }
+      YA_API.send("/api/questions").then(d=>draw(d.items)).catch(()=>draw([]));
+    }
+    document.getElementById("qform").onsubmit = function(e){
+      e.preventDefault();
+      const payload = {name:qn.value, topic:qt.value, text:qx.value};
+      if(!YA_API.ok){ YA.toast("Backend o‘chiq"); return; }
+      YA_API.send("/api/questions",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)})
+        .then(()=>{ qform.reset(); YA.addXP(6,"Savol"); load(); })
+        .catch(err=>YA.toast(err.message||"Xato"));
+    };
+    setTimeout(load, 400);
+  </script>
+</body>
+</html>

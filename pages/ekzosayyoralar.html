@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ekzosayyoralar — Yulduzlar Akademiyasi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="nav"></header>
+  <main class="page">
+    
+<div class="wrap page-hero">
+  <div class="breadcrumbs"><a href="../index.html">Bosh sahifa</a> / Ekzosayyoralar</div>
+  <h1>Boshqa <span>quyoshlar</span> oilasi</h1>
+  <p class="lead">Minglab ekzosayyoralar topilgan. Bu yerda — dars uchun 6 ta taniqli misol.</p>
+</div>
+<section><div class="wrap grid-3" id="e"></div></section>
+
+  </main>
+  <footer></footer>
+  <script src="../js/data.js"></script>
+  <script src="../js/prefs.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+document.getElementById("e").innerHTML = YA_DATA.exoplanets.map(x=>`
+  <article class="card"><span class="tag pink">${x.star}</span><h3>${x.name}</h3><p>${x.about}</p></article>`).join("");
+</script>
+</body>
+</html>

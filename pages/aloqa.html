@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aloqa — Yulduzlar Akademiyasi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <div class="stars"></div>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="../index.html"><span class="logo-mark">✦</span> Yulduzlar Akademiyasi</a>
+      <nav class="nav-links" data-nav>
+        <a href="../index.html">Bosh sahifa</a>
+        <a href="sayyoralar.html">Sayyoralar</a>
+        <a href="quyosh-sistemasi.html">Quyosh sistemasi</a>
+        <a href="galereya.html">Galereya</a>
+        <a href="viktorina.html">Viktorina</a>
+        <a href="yangiliklar.html">Yangiliklar</a>
+        <a href="oyin.html">O‘yin</a>
+        <a class="nav-cta" href="aloqa.html">Qo‘shilish</a>
+      </nav>
+      <button class="burger" data-burger>☰</button>
+    </div>
+  </header>
+  <main class="page">
+    <div class="wrap page-hero">
+      <div class="breadcrumbs"><a href="../index.html">Bosh sahifa</a> / Aloqa</div>
+      <h1>Maktab klubi <span>ochiq</span></h1>
+      <p class="lead">Savol, taklif yoki tadbirga yozilish. Forma namuna: yuborilganda xabar shu sahifada chiqadi, serverga ketmaydi.</p>
+    </div>
+    <section>
+      <div class="wrap grid-2">
+        <form class="card" data-contact>
+          <div class="field"><label>Ism</label><input required name="name" placeholder="Ismingiz" /></div>
+          <div class="field"><label>Sinf / maktab</label><input name="school" placeholder="Masalan, 8-sinf" /></div>
+          <div class="field"><label>Mavzu</label>
+            <select name="topic">
+              <option>Viktorina savoli</option>
+              <option>Kuzatuv kechasi</option>
+              <option>Saytga qo‘shimcha</option>
+              <option>Boshqa</option>
+            </select>
+          </div>
+          <div class="field"><label>Xabar</label><textarea required name="msg" rows="5" placeholder="Yozing…"></textarea></div>
+          <button class="btn btn-primary" type="submit">Yuborish</button>
+        </form>
+        <div>
+          <div class="card">
+            <h3>Manzil</h3>
+            <p>Toshkent, ochiq ta’lim laboratoriyasi</p>
+            <p>hello@yulduzlar.academy</p>
+            <p>Dushanba–Juma, 15:00–18:00</p>
+          </div>
+          <div class="card hidden" data-form-ok style="margin-top:16px">
+            <h3>Rahmat!</h3>
+            <p>Xabaringiz qabul qilindi (namuna). Haqiqiy yuborish uchun keyin backend qo‘shiladi.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap copy">© <span data-year></span> Yulduzlar Akademiyasi</div></footer>
+  <script src="../js/data.js"></script>
+  <script src="../js/prefs.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

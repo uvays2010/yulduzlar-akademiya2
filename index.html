@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yulduzlar Akademiyasi — to‘liq kosmos portali</title>
+  <meta name="description" content="O‘quvchilar uchun katta astronomik portal: atlas, orbit simulyatori, viktorina, kabinet, vositalar." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+  <header class="nav"></header>
+  <main class="page">
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow"><span class="badge-live"></span> 30+ sahifa · interaktiv laboratoriya</div>
+        <h1>Bu oddiy sayt emas —<br><span>butun bir akademiya.</span></h1>
+        <p class="lead">Atlas, jonli orbit simulyatori, ikki darajali viktorina, kabinet (XP), sertifikat, oy fazasi, masofa konvertori, missiyalar arxivi va global qidiruv. Hammasini brauzerda ochasiz.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="pages/orbit.html">Orbit simulyatori</a>
+          <a class="btn btn-ghost" href="pages/kabinet.html">Kabinetni ochish</a>
+          <a class="btn btn-gold" href="pages/viktorina.html">Test topshirish</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>8</b><span>sayyora + taqqoslash</span></div>
+          <div class="stat"><b>18</b><span>test savoli</span></div>
+          <div class="stat"><b>30+</b><span>sahifa</span></div>
+          <div class="stat"><b>XP</b><span>mahalliy kabinet</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <canvas id="solar-mini"></canvas>
+        <div class="float-card">
+          <small>Qidiruv</small>
+          <strong>Ctrl + K — butun portal</strong>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <div class="eyebrow">Laboratoriya</div>
+            <h2>Katta tizimning asosiy eshiklari</h2>
+          </div>
+          <p>Har bir modul alohida dars va alohida vosita. XP yig‘ib, sertifikat oling.</p>
+        </div>
+        <div class="grid-3">
+          <a class="card" href="pages/orbit.html"><span class="tag">Simulyator</span><h3>Jonli orbitlar</h3><p>8 ta sayyora aylanadi. Ustiga bosing — kartochka ochiladi.</p></a>
+          <a class="card" href="pages/solishtirish.html"><span class="tag gold">Tahlil</span><h3>Sayyoralarni solishtirish</h3><p>Diametr, harorat, yo‘ldosh, gravitatsiya — yonma-yon.</p></a>
+          <a class="card" href="pages/kabinet.html"><span class="tag violet">Kabinet</span><h3>XP va yutuqlar</h3><p>Darslar, test natijalari va sertifikat shu yerda saqlanadi.</p></a>
+          <a class="card" href="pages/olimpiada.html"><span class="tag pink">Qiyin</span><h3>Olimpiada testi</h3><p>Murakkabroq 8 savol. 70%+ — sertifikatga yo‘l.</p></a>
+          <a class="card" href="pages/oy-fazalari.html"><span class="tag green">Osmon</span><h3>Oy fazasi hisoblagich</h3><p>Bugungi yoki istalgan sanadagi Oy ko‘rinishi.</p></a>
+          <a class="card" href="pages/konvertor.html"><span class="tag orange">Vosita</span><h3>Masofa konvertori</h3><p>km, astronomik birlik, yorug‘lik yili.</p></a>
+          <a class="card" href="pages/missiyalar.html"><span class="tag">Arxiv</span><h3>Kosmik missiyalar</h3><p>Sputnikdan Webb gacha — yil va tashkilot bilan.</p></a>
+          <a class="card" href="pages/yulduz-turkumlari.html"><span class="tag gold">Xarita</span><h3>Yulduz turkumlari</h3><p>Fasllar bo‘yicha 8 ta taniqli turkumni o‘rganing.</p></a>
+          <a class="card" href="pages/ekzosayyoralar.html"><span class="tag violet">Uzoq</span><h3>Ekzosayyoralar</h3><p>Boshqa yulduzlar oilasidagi mashhur topilmalar.</p></a>
+          <a class="card" href="pages/viktorina.html"><span class="tag">Test</span><h3>Asosiy viktorina</h3><p>10 savol. Ball kabinet va reytingga yoziladi.</p></a>
+          <a class="card" href="pages/oyin.html"><span class="tag pink">O‘yin</span><h3>Yulduz tutish</h3><p>Tushayotgan yulduzlarni ushlang.</p></a>
+          <a class="card" href="pages/reyting.html"><span class="tag gold">Jadval</span><h3>Reyting</h3><p>Backenddagi eng yaxshi natijalar.</p></a>
+        </div>
+      </div>
+    </section>
+
+
+    <section>
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <div class="eyebrow">Bugungi sayyora</div>
+            <h2>Atlasdan tanlang</h2>
+          </div>
+          <a href="pages/sayyoralar.html">Barcha sayyoralar →</a>
+        </div>
+        <div class="grid-4" id="home-planets"></div>
+      </div>
+    </section>
+    <section>
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <div class="eyebrow">Qanday ishlaydi</div>
+            <h2>Uch qadamda akademiya</h2>
+          </div>
+        </div>
+        <div class="grid-3">
+          <article class="card"><span class="tag">1</span><h3>Darsni oching</h3><p>Sayyoralar, tarix, missiyalar yoki turkumlardan birini o‘qing. Har ochilgan dars XP beradi.</p></article>
+          <article class="card"><span class="tag gold">2</span><h3>Laboratoriyada sinang</h3><p>Orbit, oy fazasi, konvertor, solishtirish — ko‘rib hisoblab o‘rganasiz.</p></article>
+          <article class="card"><span class="tag violet">3</span><h3>Test va sertifikat</h3><p>Viktorina yoki olimpiadani topshiring. 70%+ bo‘lsa sertifikat chiqadi.</p></article>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <div class="eyebrow">Vositalar</div>
+            <h2>Hisoblab ko‘ring</h2>
+          </div>
+          <a href="pages/vositalar.html">Barchasi →</a>
+        </div>
+        <div class="grid-3">
+          <a class="card" href="pages/oy-fazalari.html"><h3>Oy fazasi</h3><p>Sanani tanlang — oy yorug‘ qismi o‘zgaradi.</p></a>
+          <a class="card" href="pages/konvertor.html"><h3>Masofa konvertori</h3><p>km, AU va yorug‘lik yili.</p></a>
+          <a class="card" href="pages/vositalar.html"><h3>Og‘irlik</h3><p>Boshqa sayyorada necha kg bo‘lar edingiz.</p></a>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <div class="eyebrow">Bugungi fakt</div>
+            <h2>Bilasizmi?</h2>
+          </div>
+          <button class="btn btn-ghost" data-new-fact type="button">Boshqa fakt</button>
+        </div>
+        <div class="card"><p data-random-fact style="font-size:1.2rem;color:#fff">Yuklanmoqda…</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap grid-2">
+        <article class="card">
+          <div class="eyebrow">Nima o‘rganasiz</div>
+          <h2>Quyosh oilasi — oddiy til bilan</h2>
+          <p>Quyosh sistemasi — Quyosh va uning atrofida aylanadigan 8 ta sayyora, dwarf sayyoralar, asteroidlar, kometalar. Ichki to‘rtta (Merkuriy, Venera, Yer, Mars) toshli. Tashqi to‘rtta (Yupiter, Saturn, Uran, Neptun) gaz va muz gigantlari.</p>
+          <p>Masofalar juda katta. Yorug‘lik Quyoshdan Yerga taxminan 8 daqiqada yetadi. Neptungacha esa soatlab. Shuning uchun astronomlar kilometr o‘rniga astronomik birlik (AU) ishlatadi.</p>
+          <p>Bu portalda har bir sayyoraning kartasi, orbitasi va solishtirish jadvali bor. Avval atlasni oching, keyin simulyatorni ishga tushiring.</p>
+          <div class="actions"><a class="btn btn-primary" href="pages/quyosh-sistemasi.html">Tizim darsi</a></div>
+        </article>
+        <article class="card">
+          <div class="eyebrow">Nega muhim</div>
+          <h2>Kuzatish — xavfsiz va foydali</h2>
+          <p>Osmonni kuzatish uchun qimmat teleskop shart emas. Ko‘z bilan Oy kraterlari, Venera, Yupiter, ba’zan Sut yo‘li chizig‘ini ko‘rish mumkin. Eng muhim qoida: Quyoshga hech qachon to‘g‘ridan-to‘g‘ri qaramang.</p>
+          <p>Daftar yuriting: sana, soat, nima ko‘rganingiz. Shunda har kecha farqni sezasiz. Oy fazasi hisoblagich shu daftar uchun yordamchi.</p>
+          <p>Klubga yozilsangiz, maktabda kichik kuzatuv kechasi tashkil qilish osonroq bo‘ladi.</p>
+          <div class="actions"><a class="btn btn-ghost" href="pages/kuzatuv.html">Kuzatuv odobi</a></div>
+        </article>
+      </div>
+    </section>
+    <section>
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <div class="eyebrow">Tarix</div>
+            <h2>Qisqa yo‘l: Galileydan Webb gacha</h2>
+          </div>
+          <a href="pages/tarix.html">To‘liq chiziq →</a>
+        </div>
+        <div class="grid-4">
+          <article class="card"><h3>1610</h3><p>Galiley Yupiter yo‘ldoshlarini ko‘rdi. Sayyoralar “osmon chirog‘i” emas, jism ekani aniqlandi.</p></article>
+          <article class="card"><h3>1957</h3><p>Sputnik-1 orbitaga chiqdi. Insoniyatning kosmik asri boshlandi.</p></article>
+          <article class="card"><h3>1969</h3><p>Apollon-11 Oyga qadam qo‘ydi. Odam boshqa jismda yurdi.</p></article>
+          <article class="card"><h3>2021</h3><p>James Webb teleskopi uchdi. Galaktikalarning erta davrini suratga oladi.</p></article>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <div class="eyebrow">Jurnal</div>
+            <h2>So‘nggi xabarlar</h2>
+          </div>
+          <a href="pages/yangiliklar.html">Barchasi →</a>
+        </div>
+        <div class="grid-2" id="home-news"></div>
+      </div>
+    </section>
+    <section>
+      <div class="wrap card">
+        <div class="eyebrow">O‘qituvchiga</div>
+        <h2>Darsda qanday ishlatasiz</h2>
+        <p>1-bosqich: 10 daqiqa atlas. 2-bosqich: orbit simulyatori. 3-bosqich: 5 savollik viktorina. 4-bosqich: kabinetdagi XP ni ko‘rsatish. Barchasi oflayn ham ishlaydi, server bo‘lsa reyting ham saqlanadi.</p>
+        <p>Raqamlar o‘quv uchun soddalashtirilgan. Aniq ilmiy ish o‘rniga tushuntirish modeli. Manba sifatida NASA/ESA saytlarini qo‘shimcha o‘qish tavsiya etiladi.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="pages/darslar.html">Mini-kurslar</a>
+          <a class="btn btn-ghost" href="pages/haqida.html">Loyiha haqida</a>
+          <a class="btn btn-gold" href="pages/sertifikat.html">Sertifikat</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer></footer>
+  <script src="js/data.js"></script>
+  <script src="js/prefs.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/solar.js"></script>
+  <script>
+    const hp = document.getElementById("home-planets");
+    if (hp) hp.innerHTML = YA_DATA.planets.slice(0,8).map(p => `
+      <a class="card" href="pages/sayyora.html?id=${p.id}">
+        <div class="orb" style="background:${p.color};color:${p.color}"></div>
+        <h3>${p.name}</h3>
+        <p>${p.fact}</p>
+      </a>`).join("");
+    const box = document.getElementById("home-news");
+    box.innerHTML = YA_DATA.news.slice(0,4).map(n => `
+      <a class="card" href="pages/yangiliklar.html">
+        <span class="tag">${n.cat}</span><h3>${n.title}</h3><p>${n.excerpt}</p>
+        <small style="color:#9aa8c7">${n.date}</small></a>`).join("");
+  </script>
+</body>
+</html>

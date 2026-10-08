@@ -1,0 +1,160 @@
+window.YA_DATA = {
+  planets: [
+    { id: "merkuriy", name: "Merkuriy", tag: "Ichki", type: "ichki", color: "#c9a27a", distance: 57.9, distanceText: "57.9 mln km", day: "59 Yer kuni", year: "88 Yer kuni", moons: 0, temp: 167, tempText: "167°C", fact: "Quyosh sistemasidagi eng kichik va Quyoshga eng yaqin sayyora. Yuzasi Oyga o‘xshab kraterlar bilan qoplangan.", size: 4879, g: 3.7 },
+    { id: "venera", name: "Venera", tag: "Ichki", type: "ichki", color: "#e8c07a", distance: 108.2, distanceText: "108.2 mln km", day: "243 Yer kuni", year: "225 Yer kuni", moons: 0, temp: 464, tempText: "464°C", fact: "Yerdan issiqroq: qalin atmosfera issiqlikni tutib qoladi. Aylanishi teskari yo‘nalishda.", size: 12104, g: 8.87 },
+    { id: "yer", name: "Yer", tag: "Uyimiz", type: "ichki", color: "#4ea3ff", distance: 149.6, distanceText: "149.6 mln km", day: "24 soat", year: "365.25 kun", moons: 1, temp: 15, tempText: "15°C", fact: "Hozircha hayot mavjudligi tasdiqlangan yagona sayyora. 71% yuzasi suv bilan qoplangan.", size: 12742, g: 9.81 },
+    { id: "mars", name: "Mars", tag: "Qizil", type: "ichki", color: "#ff6b4a", distance: 227.9, distanceText: "227.9 mln km", day: "24.6 soat", year: "687 Yer kuni", moons: 2, temp: -63, tempText: "-63°C", fact: "Olympus Mons — tizimdagi eng baland vulqon. Kelajak tadqiqotlarining asosiy manzili.", size: 6779, g: 3.71 },
+    { id: "yupiter", name: "Yupiter", tag: "Gigant", type: "tashqi", color: "#d7b48a", distance: 778.5, distanceText: "778.5 mln km", day: "10 soat", year: "12 Yer yili", moons: 95, temp: -110, tempText: "-110°C", fact: "Eng katta sayyora. Katta Qizil Dog‘ asrlar davomida davom etayotgan bo‘ron.", size: 139820, g: 24.79 },
+    { id: "saturn", name: "Saturn", tag: "Halqa", type: "tashqi", color: "#f0d59a", distance: 1430, distanceText: "1.43 mlrd km", day: "10.7 soat", year: "29 Yer yili", moons: 146, temp: -140, tempText: "-140°C", fact: "O‘rtacha zichligi suvdan past. Halqalari muz va tosh parchalaridan iborat.", size: 116460, g: 10.44 },
+    { id: "uran", name: "Uran", tag: "Muzli", type: "tashqi", color: "#7be0e0", distance: 2870, distanceText: "2.87 mlrd km", day: "17 soat", year: "84 Yer yili", moons: 28, temp: -195, tempText: "-195°C", fact: "O‘z o‘qi atrofida deyarli yonboshlab aylanadi. Rangini metan gazi beradi.", size: 50724, g: 8.69 },
+    { id: "neptun", name: "Neptun", tag: "Shamol", type: "tashqi", color: "#4d6dff", distance: 4500, distanceText: "4.50 mlrd km", day: "16 soat", year: "165 Yer yili", moons: 16, temp: -200, tempText: "-200°C", fact: "Tizimdagi eng kuchli shamollar — soatiga 2000 km gacha.", size: 49244, g: 11.15 }
+  ],
+  news: [
+    { title: "James Webb yangi galaktika guruhini suratga oldi", date: "2026-09-12", cat: "Kuzatuv", excerpt: "Uzoq infraqizil diapazonda 13 milliard yillik yorug‘lik izlari aniqlandi." },
+    { title: "O‘zbekistonlik o‘quvchilar xalqaro olimpiadada medal oldi", date: "2026-09-02", cat: "Ta’lim", excerpt: "Astronomiya va astrofizika yo‘nalishida jamoaviy bronza." },
+    { title: "Artemis dasturi: Oy stansiyasi rejalari yangilandi", date: "2026-08-21", cat: "Missiya", excerpt: "Gateway moduli uchun navbatdagi sinov oynasi e’lon qilindi." },
+    { title: "Perseid yulduz yog‘ingarchiligi rekord kuzatuv berdi", date: "2026-08-13", cat: "Osmon", excerpt: "Qorong‘u hududlarda soatiga 80 tagacha meteor ko‘rindi." },
+    { title: "Europa Clipper Yupiter sari yo‘l oldi", date: "2026-07-18", cat: "Missiya", excerpt: "Muz ostidagi okean sharoitini o‘rganish uchun uzoq parvoz." },
+    { title: "Maktab teleskop tarmog‘i 40 ta klubga yetdi", date: "2026-06-30", cat: "Ta’lim", excerpt: "Viloyatlararo kuzatuv kechalari rejalashtirildi." }
+  ],
+  glossary: [
+    ["Yorug‘lik yili", "Yorug‘likning bir yilda bosib o‘tadigan masofasi — taxminan 9.46 trillion km."],
+    ["Qora tuynuk", "Gravitatsiyasi shunchalik kuchliki, hatto yorug‘lik ham qochib qutula olmaydigan soha."],
+    ["Supernova", "Yirik yulduzning portashi. Qisqa vaqtda butun galaktikadan yorug‘roq bo‘lishi mumkin."],
+    ["Ekzosayyora", "Boshqa yulduz atrofida aylanadigan sayyora."],
+    ["Tumanlik", "Kosmosdagi gaz va chang buluti. Yangi yulduzlar shu yerda tug‘iladi."],
+    ["Pulsar", "Juda tez aylanuvchi neytron yulduz. Radio impulslar yuboradi."],
+    ["Kuiper kamari", "Neptundan tashqaridagi muzli jismlar mintaqasi. Pluton shu yerda."],
+    ["Quyosh shamoli", "Quyoshdan otilib chiqadigan zaryadlangan zarralar oqimi."],
+    ["Astronomik birlik (AB)", "Yer–Quyosh o‘rtacha masofasi: 149.6 million km."],
+    ["Ekliptika", "Yerning Quyosh atrofidagi orbitasi tekisligi osmonga proyeksiyasi."],
+    ["Qizil siljish", "Uzoqlashayotgan obyekt nuri uzun to‘lqin tomonga siljishi."],
+    ["Magnitudo", "Yulduz yorqinligining shartli o‘lchovi. Kichik son — yorqinroq."]
+  ],
+  facts: [
+    "Bir choy qoshiq neytron yulduz moddasi milliardlab tonnaga teng bo‘lishi mumkin.",
+    "Oy har yili Yerdan taxminan 3.8 sm uzoqlashadi.",
+    "Venerrada bir kun bir yildan uzun.",
+    "Saturnning Enkelad yo‘ldoshida muz ostida okean borligi taxmin qilinadi.",
+    "Quyosh sistemasidagi barcha sayyoralar Quyosh va Yupiter orasidagi bo‘shliqqa sig‘adi.",
+    "Osmondagi yulduzlarning ko‘pi juft yoki ko‘p tizimli.",
+    "Xalqaro kosmik stansiya 90 daqiqada Yerni bir marta aylanib chiqadi.",
+    "Inson tanasidagi ko‘p atomlar qadimgi yulduzlar ichida yaratilgan.",
+    "Yupiter shunchalik katta-ki, uning ichiga 1300 ta Yer sig‘ishi mumkin.",
+    "Kuzatilgan eng uzoq galaktikalarning nuri bizga milliardlab yil oldin yo‘lga chiqqan."
+  ],
+  events: [
+    { date: "6 oktabr", title: "To‘lin oy — Ovchi superoyi", place: "Butun O‘zbekiston" },
+    { date: "21 oktabr", title: "Orionid meteor oqimi cho‘qqisi", place: "Qorong‘u tumanlar" },
+    { date: "12 noyabr", title: "Maktablararo viktorina finali", place: "Toshkent, Akademiya zali" },
+    { date: "14 dekabr", title: "Geminid yulduz yog‘ingarchiligi", place: "Ochiq osmon kuzatuvi" },
+    { date: "3 yanvar", title: "Kvadrantid meteorlari", place: "Erta tonggi osmon" },
+    { date: "fevral", title: "Qishki yulduz turkumlarini o‘rganish", place: "Maktab klublari" }
+  ],
+  team: [
+    { name: "Nilufar Karimova", role: "Ilmiy muharrir", bio: "Astronomiya o‘qituvchisi, 12 yillik tajriba." },
+    { name: "Sardor Tursunov", role: "Kontent dizayneri", bio: "Interaktiv darslar va illustratsiyalar." },
+    { name: "Madina Aliyeva", role: "Viktorina muallifi", bio: "Olimpiada masalalari va o‘yinlar." },
+    { name: "Javohir Rasulov", role: "Kuzatuv bo‘limi", bio: "Teleskop kechalari va osmon xaritasi." }
+  ],
+  quiz: {
+    asosiy: [
+      { q: "Quyosh sistemasida nechta rasmiy sayyora bor?", options: ["7", "8", "9", "10"], a: 1 },
+      { q: "Yerga eng yaqin yulduz qaysi?", options: ["Sirius", "Proxima Centauri", "Betelgeuse", "Vega"], a: 1 },
+      { q: "Qaysi sayyorada halqalar mashhur?", options: ["Mars", "Merkuriy", "Saturn", "Venera"], a: 2 },
+      { q: "Yorug‘lik vakuumda qancha tezlikda harakatlanadi?", options: ["300 000 km/s", "3 000 km/s", "30 000 km/s", "3 000 000 km/s"], a: 0 },
+      { q: "Oyning Yerdan ko‘rinadigan tomoni nima deyiladi?", options: ["Qorong‘u tomon", "Yaqin tomon", "Ekvator", "Kratersiz zona"], a: 1 },
+      { q: "Qaysi sayyora “qizil sayyora” nomini olgan?", options: ["Yupiter", "Mars", "Neptun", "Uran"], a: 1 },
+      { q: "XKS qisqartmasi nimani anglatadi?", options: ["Xalqaro kosmik stansiya", "Xususiy kichik sun’iy yo‘ldosh", "Xavfsiz kuzatuv tizimi", "Xiralashgan kometalar ro‘yxati"], a: 0 },
+      { q: "Galaktikamizning nomi nima?", options: ["Andromeda", "Somon yo‘li", "Triangulum", "Magellan"], a: 1 },
+      { q: "Quyosh asosan qaysi elementdan tuzilgan?", options: ["Oltin", "Temir", "Vodorod", "Azot"], a: 2 },
+      { q: "Bir yorug‘lik yili nima o‘lchaydi?", options: ["Vaqt", "Tezlik", "Masofa", "Og‘irlik"], a: 2 }
+    ],
+    olimpiada: [
+      { q: "1 astronomik birlik taxminan necha km?", options: ["1.5 million", "15 million", "150 million", "1.5 milliard"], a: 2 },
+      { q: "Qaysi sayyora o‘z o‘qi atrofida yonboshlab aylanadi?", options: ["Mars", "Uran", "Venera", "Merkuriy"], a: 1 },
+      { q: "Kuiper kamari qayerda?", options: ["Mars–Yupiter orasi", "Neptundan tashqarida", "Quyosh yuzasida", "Andromedada"], a: 1 },
+      { q: "James Webb asosan qaysi nurlanishni o‘qiydi?", options: ["Radio", "Infraqizil", "Gamma", "Ultrabinafsha"], a: 1 },
+      { q: "Quyosh massasining tizimdagi ulushi taxminan?", options: ["50%", "75%", "90%", "99.8%"], a: 3 },
+      { q: "Pulsar nima?", options: ["Kometa", "Neytron yulduz", "Gaz giganti", "Tumanlik turi"], a: 1 },
+      { q: "Yupiter yo‘ldoshlaridan qaysi biri vulqonlari bilan mashhur?", options: ["Io", "Kallisto", "Titan", "Fobos"], a: 0 },
+      { q: "Qizil siljish nimani ko‘rsatadi?", options: ["Yaqinlashish", "Uzoqlashish", "Aylanish", "Portlash"], a: 1 }
+    ]
+  },
+  missions: [
+    { name: "Sputnik 1", year: 1957, org: "SSSR", about: "Birinchi sun’iy yo‘ldosh. Kosmik asr shu bilan ochildi." },
+    { name: "Vostok 1", year: 1961, org: "SSSR", about: "Yuri Gagarin — orbitadagi birinchi inson." },
+    { name: "Apollon 11", year: 1969, org: "NASA", about: "Armstrong va Oldrin Oy yuzasiga tushdi." },
+    { name: "Voyager 1–2", year: 1977, org: "NASA", about: "Tashqi sayyoralarni suratga oldi, hozir yulduzlararo fazoda." },
+    { name: "Hubble", year: 1990, org: "NASA/ESA", about: "Orbitadagi teleskop. Galaktikalar atlasini o‘zgartirdi." },
+    { name: "XKS", year: 1998, org: "Xalqaro", about: "Doimiy odamli laboratoriya, 400 km balandlikda." },
+    { name: "Curiosity", year: 2012, org: "NASA", about: "Mars roveri. Tosh va iqlim tahlili." },
+    { name: "James Webb", year: 2021, org: "NASA/ESA/CSA", about: "Infraqizil observatoriya, L2 nuqtasi yaqinida." }
+  ],
+  astronauts: [
+    { name: "Yuri Gagarin", year: "1961", about: "Birinchi inson kosmosda. Vostok 1 parvozi 108 daqiqa davom etgan." },
+    { name: "Valentina Tereshkova", year: "1963", about: "Orbitadagi birinchi ayol. Vostok 6." },
+    { name: "Nil Armstrong", year: "1969", about: "Oy yuzasiga qadam qo‘ygan birinchi inson." },
+    { name: "Sally Ride", year: "1983", about: "AQShning birinchi ayol astronauti." },
+    { name: "Kalpana Chavla", year: "1997", about: "Hindistonlik-amerikalik muhandis-astronaut." },
+    { name: "Tim Peake", year: "2015", about: "Britaniyalik astronaut, XKS da ilmiy tajribalar." }
+  ],
+  constellations: [
+    { name: "Katta Ayiq", season: "Yil bo‘yi", stars: "Dubhe, Alkaid", about: "Qutb yulduzini topishga yordam beradi. Yetti yorqin yulduz — arava." },
+    { name: "Kichik Ayiq", season: "Yil bo‘yi", stars: "Polaris", about: "Qutb yulduzi shu turkumboshida. Shimolni ko‘rsatadi." },
+    { name: "Orion", season: "Qish", stars: "Betelgeuse, Rigel", about: "Ovchi. Kamaridagi uch yulduz osonda oson topiladi." },
+    { name: "Kassiopeya", season: "Kuz-qish", stars: "Schedar", about: "W harfiga o‘xshash. Somon yo‘li yaqinida." },
+    { name: "Leo", season: "Bahor", stars: "Regulus", about: "Arslon. Bahor osmonining belgisi." },
+    { name: "Scorpius", season: "Yoz", stars: "Antares", about: "Chayon. Yozgi janubiy osmonda qizg‘ish yulduz bilan." },
+    { name: "Cygnus", season: "Yoz", stars: "Deneb", about: "Oqqush. Somon yo‘li o‘rtasidan uchib o‘tadi." },
+    { name: "Taurus", season: "Qish", stars: "Aldebaran", about: "Buqa. Pleiadalar to‘dasi shu yo‘nalishda." }
+  ],
+  exoplanets: [
+    { name: "Proxima b", star: "Proxima Centauri", about: "Yerga eng yaqin yulduz atrofidagi sayyora." },
+    { name: "Kepler-452b", star: "Kepler-452", about: "Yerning amakivachchasi deb atalgan." },
+    { name: "TRAPPIST-1e", star: "TRAPPIST-1", about: "Yetti sayyorali tizimning hayot mintaqasidagi a’zosi." },
+    { name: "55 Cancri e", star: "55 Cancri", about: "Yulduzga juda yaqin, olmos taxminlari bilan mashhur." },
+    { name: "HD 209458 b", star: "HD 209458", about: "Atmosferasi o‘rganilgan ilk issiq yupiterlardan." },
+    { name: "TOI-700 d", star: "TOI-700", about: "TESS topilmalaridan, hayot mintaqasida." }
+  ],
+  pages: [
+    ["Bosh sahifa", "index.html", "portal"],
+    ["Sayyoralar", "pages/sayyoralar.html", "atlas"],
+    ["Quyosh sistemasi", "pages/quyosh-sistemasi.html", "tizim"],
+    ["Orbit simulyatori", "pages/orbit.html", "simulyator"],
+    ["Solishtirish", "pages/solishtirish.html", "vosita"],
+    ["Viktorina", "pages/viktorina.html", "test"],
+    ["Reyting", "pages/reyting.html", "test"],
+    ["Olimpiada testi", "pages/olimpiada.html", "test"],
+    ["O‘yin", "pages/oyin.html", "o‘yin"],
+    ["Galereya", "pages/galereya.html", "media"],
+    ["Yangiliklar", "pages/yangiliklar.html", "jurnal"],
+    ["Lug‘at", "pages/lugat.html", "so‘z"],
+    ["Faktlar", "pages/faktlar.html", "fakt"],
+    ["Tadbirlar", "pages/voqealar.html", "taqvim"],
+    ["Jamoa", "pages/jamoa.html", "odam"],
+    ["Haqida", "pages/haqida.html", "loyiha"],
+    ["Aloqa", "pages/aloqa.html", "xabar"],
+    ["Savollar doskasi", "pages/savollar.html", "xabar"],
+    ["Klub", "pages/klub.html", "xabar"],
+    ["FAQ", "pages/savol-javob.html", "savol"],
+    ["Vositalar", "pages/vositalar.html", "kalkulyator"],
+    ["Tarix", "pages/tarix.html", "tarix"],
+    ["Kuzatuv", "pages/kuzatuv.html", "osmon"],
+    ["Darslar", "pages/darslar.html", "kurs"],
+    ["Xarita", "pages/xarita.html", "meny"],
+    ["Kabinet", "pages/kabinet.html", "profil"],
+    ["Sozlamalar", "pages/sozlamalar.html", "profil"],
+    ["Boshqaruv", "pages/boshqaruv.html", "profil"],
+    ["Missiyalar", "pages/missiyalar.html", "parvoz"],
+    ["Astronautlar", "pages/astronautlar.html", "kashshof"],
+    ["Yulduz turkumlari", "pages/yulduz-turkumlari.html", "osmon"],
+    ["Oy fazalari", "pages/oy-fazalari.html", "oy"],
+    ["Konvertor", "pages/konvertor.html", "o‘lchov"],
+    ["Ekzosayyoralar", "pages/ekzosayyoralar.html", "boshqa yulduz"],
+    ["Sertifikat", "pages/sertifikat.html", "diplom"],
+    ["Meteorlar", "pages/meteorlar.html", "yog‘in"],
+    ["Webb maqola", "pages/maqola-webb.html", "teleskop"],
+    ["Mars maqola", "pages/maqola-mars.html", "qizil"]
+  ]
+};

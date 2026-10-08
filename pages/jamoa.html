@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jamoa — Yulduzlar Akademiyasi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <div class="stars"></div>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="../index.html"><span class="logo-mark">✦</span> Yulduzlar Akademiyasi</a>
+      <nav class="nav-links" data-nav>
+        <a href="../index.html">Bosh sahifa</a>
+        <a href="sayyoralar.html">Sayyoralar</a>
+        <a href="quyosh-sistemasi.html">Quyosh sistemasi</a>
+        <a href="galereya.html">Galereya</a>
+        <a href="viktorina.html">Viktorina</a>
+        <a href="yangiliklar.html">Yangiliklar</a>
+        <a href="oyin.html">O‘yin</a>
+        <a class="nav-cta" href="aloqa.html">Qo‘shilish</a>
+      </nav>
+      <button class="burger" data-burger>☰</button>
+    </div>
+  </header>
+  <main class="page">
+    <div class="wrap page-hero">
+      <div class="breadcrumbs"><a href="../index.html">Bosh sahifa</a> / Jamoa</div>
+      <h1>Kimlar <span>yaratadi?</span></h1>
+      <p class="lead">O‘qituvchilar, dizaynerlar va kuzatuvchilar. Bu namuna jamoa — haqiqiy maktab klubi uchun shablon.</p>
+    </div>
+    <section>
+      <div class="wrap grid-4" id="team"></div>
+    </section>
+  </main>
+  <footer><div class="wrap copy">© <span data-year></span> Yulduzlar Akademiyasi</div></footer>
+  <script src="../js/data.js"></script>
+  <script src="../js/prefs.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    document.getElementById("team").innerHTML = YA_DATA.team.map(t => `
+      <article class="card">
+        <div class="orb" style="width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,#5ce1ff,#8b7cff);margin-bottom:10px"></div>
+        <h3>${t.name}</h3>
+        <span class="tag">${t.role}</span>
+        <p style="margin-top:10px">${t.bio}</p>
+      </article>`).join("");
+  </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vositalar — Yulduzlar Akademiyasi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <div class="stars"></div>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="../index.html"><span class="logo-mark">✦</span> Yulduzlar Akademiyasi</a>
+      <nav class="nav-links" data-nav>
+        <a href="../index.html">Bosh sahifa</a>
+        <a href="sayyoralar.html">Sayyoralar</a>
+        <a href="quyosh-sistemasi.html">Quyosh sistemasi</a>
+        <a href="galereya.html">Galereya</a>
+        <a href="viktorina.html">Viktorina</a>
+        <a href="yangiliklar.html">Yangiliklar</a>
+        <a href="oyin.html">O‘yin</a>
+        <a class="nav-cta" href="aloqa.html">Qo‘shilish</a>
+      </nav>
+      <button class="burger" data-burger>☰</button>
+    </div>
+  </header>
+  <main class="page">
+    <div class="wrap page-hero">
+      <div class="breadcrumbs"><a href="../index.html">Bosh sahifa</a> / Vositalar</div>
+      <h1>Og‘irlik <span>kalkulyatori</span></h1>
+      <p class="lead">Yerdagi massangiz o‘zgarmaydi. Lekin boshqa sayyorada tortishish kuchi boshqacha — shu sabab “vazn” boshqacha seziladi.</p>
+    </div>
+    <section>
+      <div class="wrap grid-2">
+        <div class="card">
+          <div class="field"><label>Yerdagi massa (kg)</label><input data-kg type="number" min="1" value="45" /></div>
+          <div class="field">
+            <label>Sayyora erkin tushish tezlanishi</label>
+            <select data-g>
+              <option value="3.7">Merkuriy — 3.7</option>
+              <option value="8.87">Venera — 8.87</option>
+              <option value="9.81" selected>Yer — 9.81</option>
+              <option value="3.71">Mars — 3.71</option>
+              <option value="24.79">Yupiter — 24.79</option>
+              <option value="10.44">Saturn — 10.44</option>
+              <option value="8.69">Uran — 8.69</option>
+              <option value="11.15">Neptun — 11.15</option>
+              <option value="1.62">Oy — 1.62</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" data-weight type="button">Hisoblash</button>
+        </div>
+        <div class="card">
+          <h3>Natija</h3>
+          <p data-weight-out>Raqam kiriting va tugmani bosing.</p>
+          <p class="notice" style="margin-top:16px">Bu soddalashtirilgan maktab formulasi: vazn ≈ massa × g. Aniq ilmiy model emas.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap copy">© <span data-year></span> Yulduzlar Akademiyasi</div></footer>
+  <script src="../js/data.js"></script>
+  <script src="../js/prefs.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

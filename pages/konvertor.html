@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Masofa konvertori — Yulduzlar Akademiyasi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="nav"></header>
+  <main class="page">
+    
+<div class="wrap page-hero">
+  <div class="breadcrumbs"><a href="../index.html">Bosh sahifa</a> / Konvertor</div>
+  <h1>km · AB · <span>yorug‘lik yili</span></h1>
+  <p class="lead">1 AB = 149 597 870.7 km. 1 yorug‘lik yili ≈ 9.4607e12 km.</p>
+</div>
+<section><div class="wrap grid-2">
+  <div class="card">
+    <div class="field"><label>Qiymat</label><input id="v" type="number" value="1" /></div>
+    <div class="field"><label>Birlik</label>
+      <select id="u">
+        <option value="km">Kilometr</option>
+        <option value="au">Astronomik birlik</option>
+        <option value="ly">Yorug‘lik yili</option>
+      </select>
+    </div>
+    <button class="btn btn-primary" id="conv" type="button">Aylantirish</button>
+  </div>
+  <div class="card" id="out"><p>Tugmani bosing.</p></div>
+</div></section>
+
+  </main>
+  <footer></footer>
+  <script src="../js/data.js"></script>
+  <script src="../js/prefs.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+const AU=149597870.7, LY=9.4607304725808e12;
+document.getElementById("conv").onclick=()=>{
+  let n=parseFloat(document.getElementById("v").value); const u=document.getElementById("u").value;
+  if(!n&&n!==0){document.getElementById("out").innerHTML="<p>Raqam kiriting.</p>";return;}
+  let km=n; if(u==="au") km=n*AU; if(u==="ly") km=n*LY;
+  document.getElementById("out").innerHTML = `
+    <h3>Natija</h3>
+    <p>${km.toExponential(4)} km</p>
+    <p>${(km/AU).toExponential(4)} AB</p>
+    <p>${(km/LY).toExponential(4)} yorug‘lik yili</p>`;
+  YA.addXP(4,"Konvertor");
+};
+</script>
+</body>
+</html>

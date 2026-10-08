@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sayyora — Yulduzlar Akademiyasi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <div class="stars"></div>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="../index.html"><span class="logo-mark">✦</span> Yulduzlar Akademiyasi</a>
+      <nav class="nav-links" data-nav>
+        <a href="../index.html">Bosh sahifa</a>
+        <a href="sayyoralar.html">Sayyoralar</a>
+        <a href="quyosh-sistemasi.html">Quyosh sistemasi</a>
+        <a href="galereya.html">Galereya</a>
+        <a href="viktorina.html">Viktorina</a>
+        <a href="yangiliklar.html">Yangiliklar</a>
+        <a href="oyin.html">O‘yin</a>
+        <a class="nav-cta" href="aloqa.html">Qo‘shilish</a>
+      </nav>
+      <button class="burger" data-burger>☰</button>
+    </div>
+  </header>
+  <main class="page">
+    <div class="wrap page-hero" id="detail"></div>
+  </main>
+  <footer><div class="wrap copy">© <span data-year></span> Yulduzlar Akademiyasi</div></footer>
+  <script src="../js/data.js"></script>
+  <script src="../js/prefs.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    const id = new URLSearchParams(location.search).get("id") || "yer";
+    const p = YA_DATA.planets.find(x => x.id === id) || YA_DATA.planets[2];
+    document.title = p.name + " — Yulduzlar Akademiyasi";
+    document.getElementById("detail").innerHTML = `
+      <div class="breadcrumbs"><a href="../index.html">Bosh sahifa</a> / <a href="sayyoralar.html">Sayyoralar</a> / ${p.name}</div>
+      <div class="grid-2">
+        <div>
+          <div class="eyebrow">${p.tag}</div>
+          <h1>${p.name}</h1>
+          <p class="lead">${p.fact}</p>
+          <a class="btn btn-ghost" href="sayyoralar.html">Atlasga qaytish</a>
+        </div>
+        <div class="card" style="display:grid;place-items:center;min-height:280px">
+          <div style="width:160px;height:160px;border-radius:50%;background:${p.color};box-shadow:inset -18px -16px 30px rgba(0,0,0,.35),0 0 40px ${p.color}"></div>
+        </div>
+      </div>
+      <section>
+        <table>
+          <tr><th>Ko‘rsatkich</th><th>Qiymat</th></tr>
+          <tr><td>Quyoshgacha masofa</td><td>${p.distanceText || p.distance}</td></tr>
+          <tr><td>Ekvator diametri</td><td>${p.size} km</td></tr>
+          <tr><td>Bir kun</td><td>${p.day}</td></tr>
+          <tr><td>Bir yil</td><td>${p.year}</td></tr>
+          <tr><td>Yo‘ldoshlar</td><td>${p.moons}</td></tr>
+          <tr><td>O‘rtacha harorat</td><td>${p.tempText || p.temp}</td></tr>
+        </table>
+      </section>`;
+  </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sayyoralarni solishtirish — Yulduzlar Akademiyasi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="nav"></header>
+  <main class="page">
+    
+<div class="wrap page-hero">
+  <div class="breadcrumbs"><a href="../index.html">Bosh sahifa</a> / Solishtirish</div>
+  <h1>Ikki olamni <span>yonma-yon</span></h1>
+  <p class="lead">Diametr, masofa, harorat, yo‘ldosh va gravitatsiya.</p>
+  <div class="grid-2">
+    <div class="field"><label>Chap</label><select id="a"></select></div>
+    <div class="field"><label>O‘ng</label><select id="b"></select></div>
+  </div>
+</div>
+<section><div class="wrap" id="cmp"></div></section>
+
+  </main>
+  <footer></footer>
+  <script src="../js/data.js"></script>
+  <script src="../js/prefs.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+const selA = document.getElementById("a"), selB = document.getElementById("b");
+YA_DATA.planets.forEach((p,i)=>{
+  selA.innerHTML += `<option value="${p.id}" ${i===2?"selected":""}>${p.name}</option>`;
+  selB.innerHTML += `<option value="${p.id}" ${i===3?"selected":""}>${p.name}</option>`;
+});
+function draw(){
+  const A = YA_DATA.planets.find(p=>p.id===selA.value);
+  const B = YA_DATA.planets.find(p=>p.id===selB.value);
+  const row = (k,av,bv)=>`<tr><td>${k}</td><td>${av}</td><td>${bv}</td></tr>`;
+  document.getElementById("cmp").innerHTML = `
+    <div class="grid-2">
+      <div class="card" style="text-align:center"><div class="orb" style="margin:0 auto 10px;background:${A.color};color:${A.color}"></div><h3>${A.name}</h3><p>${A.fact}</p></div>
+      <div class="card" style="text-align:center"><div class="orb" style="margin:0 auto 10px;background:${B.color};color:${B.color}"></div><h3>${B.name}</h3><p>${B.fact}</p></div>
+    </div>
+    <table style="margin-top:18px">
+      <tr><th>Ko‘rsatkich</th><th>${A.name}</th><th>${B.name}</th></tr>
+      ${row("Masofa", A.distanceText, B.distanceText)}
+      ${row("Diametr", A.size+" km", B.size+" km")}
+      ${row("Harorat", A.tempText, B.tempText)}
+      ${row("Kun / yil", A.day+" / "+A.year, B.day+" / "+B.year)}
+      ${row("Yo‘ldosh", A.moons, B.moons)}
+      ${row("g (m/s²)", A.g, B.g)}
+    </table>`;
+  YA.addXP(4, "Solishtirish");
+}
+selA.onchange = selB.onchange = draw; draw();
+</script>
+</body>
+</html>
